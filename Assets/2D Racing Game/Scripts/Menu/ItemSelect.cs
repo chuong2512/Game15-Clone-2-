@@ -248,8 +248,8 @@ public class ItemSelect : MonoBehaviour
 					PlayerPrefs.SetInt ("Level" + id.ToString (), 3);
 					lockIcon.SetActive (false);
 					coinsTXT.text = PlayerPrefs.GetInt ("Coins").ToString ();
-				} else
-					shopOffer.SetActive (true);
+				} /*else
+					shopOffer.SetActive (true);*/
 			}
 
 		}
@@ -261,8 +261,8 @@ public class ItemSelect : MonoBehaviour
 					PlayerPrefs.SetInt ("Car" + id.ToString (), 3);
 					lockIcon.SetActive (false);
 					coinsTXT.text = PlayerPrefs.GetInt ("Coins").ToString ();
-				} else
-					shopOffer.SetActive (true);
+				} /*else
+					shopOffer.SetActive (true);*/
 			}
 
 		}
