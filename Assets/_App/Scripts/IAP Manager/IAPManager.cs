@@ -1,4 +1,4 @@
-/*using UnityEngine.Purchasing.Security;
+using UnityEngine.Purchasing.Security;
 using System;
 using System.Collections;
 using Jackal;
@@ -7,10 +7,15 @@ using UnityEngine.Purchasing;
 
 public class IAPKey
 {
-    public const string PACK1 = "car_racing_1000";
     public const string PACK2 = "car_racing_10000";
     public const string PACK3 = "car_racing_50000";
     public const string PACK4 = "car_racing_100000";
+
+    public const string PACK1 = "remove_ads";
+    public const string PACK1_REGISTER = "car_racing_register_1";
+    public const string PACK2_REGISTER = "car_racing_register_2";
+    public const string PACK3_REGISTER = "car_racing_register_3";
+    public const string PACK4_REGISTER = "car_racing_register_4";
 }
 
 public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
@@ -47,6 +52,10 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
         builder.AddProduct(IAPKey.PACK2, ProductType.Consumable);
         builder.AddProduct(IAPKey.PACK3, ProductType.Consumable);
         builder.AddProduct(IAPKey.PACK4, ProductType.Consumable);
+        builder.AddProduct(IAPKey.PACK1_REGISTER, ProductType.Subscription);
+        builder.AddProduct(IAPKey.PACK2_REGISTER, ProductType.Subscription);
+        builder.AddProduct(IAPKey.PACK3_REGISTER, ProductType.Subscription);
+        builder.AddProduct(IAPKey.PACK4_REGISTER, ProductType.Subscription);
         UnityPurchasing.Initialize(this, builder);
     }
 
@@ -133,6 +142,10 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
     public void OnInitializeFailed(InitializationFailureReason error)
     {
         Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
+    }
+
+    public void OnInitializeFailed(InitializationFailureReason error, string message)
+    {
     }
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
@@ -233,4 +246,4 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
         Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}",
             product.definition.storeSpecificId, failureReason));
     }
-}*/
+}

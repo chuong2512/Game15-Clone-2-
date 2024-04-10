@@ -22,6 +22,7 @@ public class Pause : MonoBehaviour
 
 	public void Resume ()
 	{
+		QuangCao.Instance.PhatQuangCaoInter();
 		Time.timeScale = 1f;
 		PauseMen.SetActive (false);
 	}

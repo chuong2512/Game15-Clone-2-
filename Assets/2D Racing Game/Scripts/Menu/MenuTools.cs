@@ -15,9 +15,12 @@ public class MenuTools : MonoBehaviour
     public int ResolutionY = 720;
 
     public GameObject manuMusic;
+    public GameObject ads;
 
     void Start()
     {
+        ads.SetActive(!GameDataManager.Instance.playerData.removeAds);
+
         if (GameObject.Find("LevelMusic(Clone)"))
             Destroy(GameObject.Find("LevelMusic(Clone)"));
 
@@ -69,6 +72,12 @@ public class MenuTools : MonoBehaviour
 
     public void SetTrue(GameObject target)
     {
+        if (GameDataManager.Instance.playerData.time <= 0)
+        {
+            RegisterManager.Instance.sub.gameObject.SetActive(true);
+            return;
+        }
+
         target.SetActive(true);
     }
 
@@ -121,7 +130,7 @@ public class MenuTools : MonoBehaviour
 
     public void OnPressDown(int i)
     {
-        /*switch (i)
+        switch (i)
         {
             case 1:
                 IAPManager.OnPurchaseSuccess = () =>
@@ -159,11 +168,23 @@ public class MenuTools : MonoBehaviour
                 };
                 IAPManager.Instance.BuyProductID(IAPKey.PACK4);
                 break;
-        }*/
+        }
     }
 
     public void LoadLevel(string name)
     {
         SceneManager.LoadScene(name);
+    }
+
+
+    public void RemoveAds()
+    {
+        IAPManager.OnPurchaseSuccess = () =>
+        {
+            GameDataManager.Instance.playerData.RemoveAds();
+            ads.SetActive(!GameDataManager.Instance.playerData.removeAds);
+        };
+
+        IAPManager.Instance.BuyProductID(IAPKey.PACK1);
     }
 }

@@ -399,6 +399,8 @@ public class GameManager : Singleton<GameManager>
         if (isDead)
         {
             youLostMenu.SetActive(true);
+
+            QuangCao.Instance.PhatQuangCaoInter();
             Time.timeScale = 0;
         }
     }

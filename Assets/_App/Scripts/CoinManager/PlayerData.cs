@@ -13,8 +13,25 @@ public class PlayerData : BaseData
     public int intDiamond;
     public int currentSong;
     public bool[] listSongs;
+    public bool removeAds;
 
     public Action<int> onChangeDiamond;
+
+    public long time;
+    public string timeRegister;
+
+    public void SetTimeRegister(long timeSet)
+    {
+        timeRegister = DateTime.Now.ToBinary().ToString();
+        time = timeSet;
+        Save();
+    }
+
+    public void ResetTime()
+    {
+        time = 0;
+        Save();
+    }
 
     public override void Init()
     {
@@ -33,6 +50,8 @@ public class PlayerData : BaseData
         intDiamond = 0;
         currentSong = 0;
         listSongs = new bool[Constant.countSong];
+
+        time = 7 * 24 * 60 * 60;
 
         for (int i = 0; i < 8; i++)
         {
@@ -62,7 +81,7 @@ public class PlayerData : BaseData
         intDiamond += a;
 
         onChangeDiamond?.Invoke(intDiamond);
-        
+
         Save();
     }
 
@@ -81,13 +100,19 @@ public class PlayerData : BaseData
         }
 
         onChangeDiamond?.Invoke(intDiamond);
-        
+
         Save();
     }
 
     public void ChooseSong(int i)
     {
         currentSong = i;
+        Save();
+    }
+
+    public void RemoveAds()
+    {
+        removeAds = true;
         Save();
     }
 }
