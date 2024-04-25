@@ -144,7 +144,7 @@ public class MenuTools : MonoBehaviour
             case 2:
                 IAPManager.OnPurchaseSuccess = () =>
                 {
-                    PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 10000);
+                    PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 2000);
                     CoinsTXT.text = PlayerPrefs.GetInt("Coins").ToString();
                     CoinsTXTSHop.text = PlayerPrefs.GetInt("Coins").ToString();
                 };
@@ -153,7 +153,7 @@ public class MenuTools : MonoBehaviour
             case 3:
                 IAPManager.OnPurchaseSuccess = () =>
                 {
-                    PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 50000);
+                    PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 5000);
                     CoinsTXT.text = PlayerPrefs.GetInt("Coins").ToString();
                     CoinsTXTSHop.text = PlayerPrefs.GetInt("Coins").ToString();
                 };
@@ -162,7 +162,7 @@ public class MenuTools : MonoBehaviour
             case 4:
                 IAPManager.OnPurchaseSuccess = () =>
                 {
-                    PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 100000);
+                    PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 10000);
                     CoinsTXT.text = PlayerPrefs.GetInt("Coins").ToString();
                     CoinsTXTSHop.text = PlayerPrefs.GetInt("Coins").ToString();
                 };
