@@ -1,4 +1,4 @@
-/*using UnityEngine.Purchasing.Security;
+using UnityEngine.Purchasing.Security;
 using System;
 using System.Collections;
 using Jackal;
@@ -135,6 +135,11 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
         Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
     }
 
+    public void OnInitializeFailed(InitializationFailureReason error, string message)
+    {
+        
+    }
+
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
     {
         bool validPurchase = true; // Presume valid for platforms with no R.V.
@@ -143,7 +148,7 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
 #if UNITY_ANDROID || UNITY_IOS || UNITY_STANDALONE_OSX
         // Prepare the validator with the secrets we prepared in the Editor
         // obfuscation window.
-        var validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
+        /*var validator = new CrossPlatformValidator(GooglePlayTangle.Data(), AppleTangle.Data(), Application.identifier);
         try
         {
             // On Google Play, result has a single product ID.
@@ -184,7 +189,7 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
         {
             Debug.Log("Invalid receipt, not unlocking content");
             validPurchase = false;
-        }
+        }*/
 #endif
 
         _isBuyFromShop = false;
@@ -233,4 +238,4 @@ public class IAPManager : PersistentSingleton<IAPManager>, IStoreListener
         Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}",
             product.definition.storeSpecificId, failureReason));
     }
-}*/
+}

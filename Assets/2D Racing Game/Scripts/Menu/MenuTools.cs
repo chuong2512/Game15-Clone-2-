@@ -121,7 +121,7 @@ public class MenuTools : MonoBehaviour
 
     public void OnPressDown(int i)
     {
-        /*switch (i)
+        switch (i)
         {
             case 1:
                 IAPManager.OnPurchaseSuccess = () =>
@@ -159,7 +159,7 @@ public class MenuTools : MonoBehaviour
                 };
                 IAPManager.Instance.BuyProductID(IAPKey.PACK4);
                 break;
-        }*/
+        }
     }
 
     public void LoadLevel(string name)
